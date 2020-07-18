@@ -3,6 +3,7 @@ module Spree
     include ActiveModel::Validations
 
     validates :quantity, numericality: {greater_than: 0}
+    validates :part_id, numericality: { other_than: :assembly_id, message: Spree.t(:must_be_other_than_assembly) }
 
     attr_reader :product, :part_options
 

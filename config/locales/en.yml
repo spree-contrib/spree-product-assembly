@@ -12,3 +12,4 @@ en:
     part_of_bundle: 'Part of bundle %{sku}'
     selected_quantity_not_available: Selected quantity not available
     user_selectable: User Selectable
+    must_be_other_than_assembly: must be other than Assembly.

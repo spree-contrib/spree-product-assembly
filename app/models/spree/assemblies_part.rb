@@ -6,6 +6,8 @@ module Spree
 
     belongs_to :part, class_name: "Spree::Variant", foreign_key: "part_id"
 
+    validates :part_id, numericality: { other_than: :assembly_id, message: Spree.t(:must_be_other_than_assembly) }
+
     delegate :name, :sku, to: :part
 
     after_create :set_master_unlimited_stock
