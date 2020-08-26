@@ -7,6 +7,8 @@ module Spree::VariantDecorator
     base.has_many :parts, through: :parts_variants, class_name: "Spree::Variant", dependent: :destroy
   end
 
+  before_destroy :ensure_no_inventory_units
+
   def assemblies_for(products)
     assemblies.where(id: products)
   end
@@ -14,6 +16,14 @@ module Spree::VariantDecorator
   def part?
     assemblies.exists?
   end
+
+  private
+    def ensure_no_inventory_units
+      if inventory_units.any?
+        errors.add(:base, Spree.t(:cannot_destroy_if_attached_to_inventory_units))
+        return false
+      end
+    end
 end
 
 Spree::Variant.prepend Spree::VariantDecorator

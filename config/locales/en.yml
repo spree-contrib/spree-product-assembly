@@ -3,6 +3,7 @@ en:
   spree:
     available_parts: Available parts
     can_be_part: Can be part
+    cannot_destroy_if_attached_to_inventory_units: Cannot delete variants once they are attached to inventory unit.
     individual_sale: Individual sale
     no_variants: No variants
     parts: Parts
